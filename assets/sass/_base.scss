@@ -1,0 +1,66 @@
+$icons-layout:smart;
+$icons-sprite-dimensions:true;
+@import "icons/*.png";
+@include all-icons-sprites;
+
+$brand-dark-pink: #C62B57;
+$brand-bright-pink: #F1396C;
+
+$heading-pink: #F4356B;
+
+$btn-purple: #CB0099;
+$btn-orange: #FF8000;
+
+$link-turquoise: #009999;
+
+$almost-black: #202514;
+
+$em-base: 16px !default;
+
+$small: "only screen and (min-width: 768px)";
+$medium: "only screen and (min-width: 992px)";
+$large: "only screen and (min-width: 1200px)";
+
+//Media Query hacks
+$mobile-only: "only screen and (max-width: 767px)";
+$tablet-only: "only screen and (min-width: 768px) and (max-width: 959px)";
+$desktop-only: "only screen and (min-width: 960px)";
+
+//Retina mega-query
+$retina: "only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx)";
+
+@function emCalc($pxWidth) {
+  @return $pxWidth / $em-base * 1em;
+}
+
+@mixin rem-font($px:16) {
+  font-size: #{$px}px;
+  font-size: #{(0.1 * $px)}rem;
+}
+
+//a, span {
+//  &.icons-sprite {
+//    display: inline-block;
+//  }
+//}
+
+.helvetica {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.open-sans {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.alice {
+  font-family: Alice, Georgia, serif;
+}
+
+.neuton {
+  font-family: Neuton, Alice, Georgia, serif;
+}

@@ -1,0 +1,423 @@
+body {
+  @extend .open-sans;
+}
+
+//Content
+
+#content {
+  position: relative;
+  padding: 95px 15px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+
+@media #{$small} {
+  #content {
+    text-align: left;
+    padding: 149px 0 0;
+  }
+}
+
+// Common Elements
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+h3 {
+  @extend .alice;
+  font-size: 32px;
+  color: $heading-pink;
+}
+
+h4 {
+  @extend .neuton;
+  font-size: 28px;
+  color: $almost-black;
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+p,
+li{
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+a {
+  color: $link-turquoise;
+  @include transition(color .3s);
+  &:hover {
+    text-decoration: none;
+    color: darken($link-turquoise, 10%);
+  }
+}
+
+// Header
+
+header[role="banner"] {
+  .navbar-header {
+    background-color: $brand-dark-pink;
+    width: 100%;
+    height: 37px;
+    p {
+      color: #fff;
+      @extend .alice;
+      font-size: emCalc(16px);
+      line-height: 37px;
+    }
+    @media #{$small} {
+      background: url(../../assets/images/common/header-background.png) left top no-repeat $brand-dark-pink;
+    }
+  }
+  .page-header {
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    border-bottom: 0;
+    //height: 106px;
+    h1 {
+      text-align: center;
+      padding: 10px 0;
+      a {
+        @extend .alice;
+        color: $almost-black;
+        font-size: emCalc(28px);
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      span {
+        color: $brand-bright-pink;
+      }
+    }
+    nav {
+      a {
+        @extend .alice;
+        color: $almost-black;
+        font-size: emCalc(16px);
+        padding: 15px 10px;
+      }
+    }
+    @media #{$small} {
+      padding: emCalc(30px) 0;
+      h1 {
+        float: left;
+        padding:0;
+        text-align: left;
+        a {
+          font-size: emCalc(44px);
+        }
+      }
+      nav {
+        float: right;
+      }
+    }
+    @media #{$medium} {
+      nav {
+        li {
+          margin-left: 20px;
+        }
+        a {
+          font-size: emCalc(22px);
+        }
+      }
+    }
+  }
+}
+
+// Main Content
+
+// Home callout/jumbotron
+
+#home-banner.jumbotron {
+  background-color: $brand-dark-pink;
+  //margin-top: 149px;
+  //padding: 0;
+  margin-bottom: 0;
+  margin-left: -15px;
+  margin-right: -15px;
+  h2 {
+    @extend .alice;
+    font-size: 40px;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: .75em; //30px
+  }
+  @media #{$small} {
+    background: url(../../assets/images/home/callout-banner-repeat.png) left repeat-x;
+    padding:0;
+  //height: 404px;
+    .container {
+      background: url(../../assets/images/home/callout-banner-brenda.png) right bottom no-repeat;
+      height: 404px;
+      padding: 75px 0 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .btn {
+    border:0;
+    @extend .alice;
+    font-size: 24px;
+    padding: 15px 22px;
+    color: #fff;
+    margin: 0 0 10px 0;
+    @media #{$small} {
+      margin: 0 10px 0 0;
+    }
+    &.appointment {
+      background-color: $btn-orange;
+      &:hover {
+        background-color: lighten($btn-orange, 10%);
+      }
+    }
+    &.help {
+      background-color: $btn-purple;
+      &:hover {
+        background-color: darken($btn-purple, 10%);
+      }
+    }
+  }
+}
+
+// Content rows
+
+[role="main"] {
+  .row {
+    padding: 40px 0;
+    border-top: 1px solid #ccc;
+    &#featured-services {
+      border-top: 0;
+    }
+    &.even {
+      background-color: #F9F9F9;
+      @include box-shadow(inset 0 1px 3px #FFF);
+    }
+    h3 {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+//Featured Services
+
+#featured-services {
+  .block-icon {
+    margin: 0 auto;
+    height: 65px;
+  }
+  h4, p, a {
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+  }
+  .service {
+    margin-bottom: 30px;
+    @media #{$small} {
+      margin-bottom:0;
+    }
+  }
+}
+
+//Our philosophy
+#our-philosophy {
+}
+
+//Coaching mantras
+
+#coaching-mantras {
+  padding-bottom: 0;
+  h5, p {
+    margin-bottom: 10px;
+  }
+  .first {
+    margin-bottom: 50px;
+  }
+}
+
+//Desktop only background-images
+
+//Hide on mobile
+
+.bg-image {
+  display: none;
+}
+
+@media #{$small} {
+  .bg-image {
+    display: block;
+  }
+  #our-philosophy {
+    .bg-image {
+      @include replace-text($img:url(../../assets/images/home/home-our-philosophy-tablet.jpg), $x:center, $y:top);
+      height: 347px;
+    }
+  }
+  #coaching-mantras {
+    .bg-image {
+      @include replace-text($img:url(../../assets/images/home/home-coaching-mantras-tablet.jpg), $x:center, $y:bottom);
+      height: 646px;
+    }
+  }
+}
+
+@media #{$medium} {
+  #our-philosophy .bg-image {
+    background-image: url(../../assets/images/home/home-our-philosophy.jpg);
+  }
+  #coaching-mantras .bg-image {
+    background-image: url(../../assets/images/home/home-coaching-mantras.jpg);
+    height: 459px;
+  }
+}
+
+#testimonials {
+  h3,
+  h3 + p {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .quote {
+    border: 1px solid #e2e2e2;
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    &:after {
+      content: " ";
+      display: block;
+      @extend .icons-quote-triangle;
+      position:absolute;
+      bottom: -22px;
+    }
+  }
+  .clients {
+    overflow: hidden;
+    position: relative;
+    .client {
+      width: 100%;
+      margin-top: 20px;
+      border-top: 1px solid #DDD;
+      padding-top: 20px;
+      &:first-child {
+        border-top:0;
+      }
+    }
+
+    a {
+      display: block;
+      @include squish-text;
+      margin: 10px auto 0;
+    }
+  }
+  .media-body {
+    h5, p {
+      text-align: left;
+    }
+  }
+}
+
+@media #{$small} {
+  #testimonials {
+    .clients {
+      .client {
+        float: left;
+        width: 180px;
+        height: 100px;
+        margin-top: 0;
+        border-top: 0;
+        padding-top:0;
+      }
+      &:after {
+        content: " ";
+        display: block;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: #F9F9F9;
+        top: 76px;
+        left: 155px;
+      }
+    }
+  }
+}
+
+
+@media #{$medium} {
+  .client {
+    &:nth-child(1) {
+      border-right: 1px solid #DCDFE2;
+    }
+    &:nth-child(3) {
+      clear: left;
+      border-right: 1px solid #DCDFE2;
+      border-top: 1px solid #DCDFE2;
+    }
+    &:nth-child(4) {
+      border-top: 1px solid #DCDFE2;
+    }
+  }
+}
+
+// Footer
+
+footer {
+  background-color: $brand-dark-pink;
+  padding: 40px 0;
+  h5, p, span, li, a {
+    color: #fff;
+  }
+  h5 {
+    margin-bottom: 15px;
+    span {
+      display: inline-block;
+      @include hide-text(left);
+    }
+  }
+  p {
+    line-height: 1.5;
+  }
+  a {
+    &:hover {
+      color: #f9f9f9;
+    }
+  }
+  ul {
+    li {
+      list-style-type: none;
+      margin-bottom: 10px;
+    }
+  }
+  .footer-social {
+    li {
+      float: left;
+      margin: 0 10px 0 0;
+      a {
+        display: inline-block;
+        @include squish-text;
+      }
+    }
+  }
+  .tweet {
+    p {
+      margin-bottom: 15px;
+      a:hover {
+        text-shadow: 0 1px 1px rgba(#000, 0.8);
+      }
+    }
+  }
+  @media #{$small} {
+    background: url(../../assets/images/common/footer-background-repeat.png) left repeat-x;
+    height: 349px;
+  }
+}
+
+// Custom UI
+
+.btn {
+  @include transition(background-color .5s);
+}

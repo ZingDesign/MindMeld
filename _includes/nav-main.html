@@ -1,0 +1,35 @@
+<header class="navbar navbar-fixed-top" role="banner">
+
+    <div class="navbar-header">
+        <div class="container">
+            <p>
+                <span>+61 21 847 727</span>
+                <span>|</span>
+                <span>brenda@mindmeldcoaching.com</span>
+            </p>
+        </div>
+    </div>
+    <div class="page-header">
+        <div class="container">
+            <h1>
+              <a href="{{ page.base_url }}"><span>Mindmeld</span> Coaching</a>
+            </h1>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav">
+                  <li{% if page.slug == "about" %} class="active"{% endif %}>
+                  <a href="{{ page.base_url }}about">About</a>
+                  </li>
+                  <li{% if page.slug == "services" %} class="active"{% endif %}>
+                  <a href="{{ page.base_url }}services">Services</a>
+                  </li>
+                  <li{% if page.slug == "blog" %} class="active"{% endif %}>
+                  <a href="{{ page.base_url }}blog">Blog</a>
+                  </li>
+                  <li{% if page.slug == "contact" %} class="active"{% endif %}>
+                  <a href="{{ page.base_url }}contact">Contact</a>
+                  </li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+</header>
