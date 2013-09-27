@@ -6,7 +6,7 @@ pygments:         true
 permalink:        pretty
 
 # Server
-destination:      /_gh_pages
+destination:      _gh_pages
 exclude:          [".editorconfig", ".gitignore", ".ruby-version", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "less", "assets/images/uncompressed"]
 port:             9002
 
@@ -21,3 +21,6 @@ expo:             http://expo.getbootstrap.com
 cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
 cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css
 cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js
+
+safe: true
+lsi: false
