@@ -53,7 +53,8 @@ module.exports = function(grunt) {
           'js/popover.js',
           'js/scrollspy.js',
           'js/tab.js',
-          'js/affix.js'
+          'js/affix.js',
+            'js/mindmeld.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -153,7 +154,7 @@ module.exports = function(grunt) {
               files: [{
                   expand: true,                     // Enable dynamic expansion
                   cwd: 'assets/images/uncompressed',// Src matches are relative to this path
-                  src: ['**/*.{png,jpg,gif}'],      // Actual patterns to match
+                  src: ['**/*.{png,jpg}'],      // Actual patterns to match
                   dest: 'assets/images/'            // Destination path prefix
               }]
           }

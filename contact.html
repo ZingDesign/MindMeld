@@ -1,0 +1,79 @@
+---
+layout: home
+title: Contact Mindmeld Coaching
+base_url: "../"
+---
+
+<div id="content" role="main">
+    <div class="container">
+        <h2 class="col-xs-12 content-header">Contact us</h2>
+
+        <div class="col-sm-8">
+            <p>You can book an in-house training, or one on one coaching by contacting Brenda now on
+                +64 21 847727 or <a href="#">email us below</a> with your enquiry.</p>
+
+            <p class="required-fields"><span>*</span> Required fields</p>
+
+            <form id="contact-form" class="form-horizontal" role="form" method="post" action="{{ page.base_url }}">
+                <!-- Your name: -->
+                <div class="form-group">
+                    <label for="full_name" class="col-sm-3 control-label">Your name<span>*</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="full_name" name="full_name" />
+                    </div>
+                </div>
+
+                <!-- Email address: -->
+                <div class="form-group">
+                    <label for="email_address" class="col-sm-3 control-label">Email address<span>*</span></label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email_address" name="email_address" />
+                    </div>
+                </div>
+
+                <!-- Company name: -->
+                <div class="form-group">
+                    <label for="company_name" class="col-sm-3 control-label">Company name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="company_name" name="company_name" />
+                    </div>
+                </div>
+
+                <!-- Phone number: -->
+                <div class="form-group">
+                    <label for="phone_number" class="col-sm-3 control-label">Phone number</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="phone_number" name="phone_number" />
+                    </div>
+                </div>
+
+                <!--Comments: -->
+                <div class="form-group">
+                    <label for="phone_number" class="col-sm-3 control-label">Comments<span>*</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="comments" name="comments" />
+                    </div>
+                </div>
+
+                <!--Captcha: -->
+                <div class="form-group">
+                    <label for="captcha_input" class="col-sm-3 control-label">Captcha<span>*</span></label>
+                    <div class="col-sm-2">
+                        <img src="http://placehold.it/91x35/F73068/ffffff&amp;text=LS57" alt="placeholder." />
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="captcha_input" name="captcha_input" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn pull-right">Submit</button>
+            </form>
+        </div>
+
+        <aside id="sidebar-contact" class="col-sm-4">
+            <div class="bg-image">
+                <p>I’d love to hear<br/> from you!</p>
+            </div>
+        </aside>
+    </div>
+</div>

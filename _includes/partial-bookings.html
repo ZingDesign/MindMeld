@@ -1,0 +1,31 @@
+<div id="sidebar-bookings">
+    <h4>Book a training, or one on one coaching </h4>
+
+    <p>Call Brenda on<br/>
+        +64 21 847727</p>
+
+    <p>Or enquire below:</p>
+
+    <form class="clearfix" role="form" action="{{ page.base_url }}" method="post">
+        <p>
+            <label class="sr-only" for="full_name">Full name</label>
+            <input class="form-control" type="text" id="full_name" name="full_name" placeholder="Full name" />
+        </p>
+        <p>
+            <label class="sr-only" for="email_address">Email address</label>
+            <input class="form-control" type="text" id="email_address" name="email_address" placeholder="Email address" />
+        </p>
+        <p>
+            <label class="sr-only" for="phone">Phone</label>
+            <input class="form-control" type="text" id="phone" name="phone" placeholder="Phone eg. 099999999" />
+        </p>
+        <p>
+            <label class="sr-only" for="company_name">Company name</label>
+            <input class="form-control" type="text" id="company_name" name="company_name"
+                   placeholder="Company name (optional)" />
+        </p>
+
+        <button type="submit" class="btn pull-right">Submit</button>
+
+    </form>
+</div> <!-- #sidebar-bookings form -->

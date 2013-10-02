@@ -10,6 +10,7 @@ $heading-pink: #F4356B;
 
 $btn-purple: #CB0099;
 $btn-orange: #FF8000;
+$btn-maroun: #900049;
 
 $link-turquoise: #009999;
 
@@ -63,4 +64,10 @@ only screen and (min-resolution: 2dppx)";
 
 .neuton {
   font-family: Neuton, Alice, Georgia, serif;
+}
+
+.panel-grey {
+  border: 1px solid #e2e2e2;
+  background-color: #f9f9f9;
+  padding: 20px;
 }

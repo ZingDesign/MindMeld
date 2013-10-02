@@ -14,36 +14,50 @@ body {
 @media #{$small} {
   #content {
     text-align: left;
-    padding: 149px 0 0;
+    padding: 163px 0 0;
   }
 }
 
 // Common Elements
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-h3 {
+h2 {
   @extend .alice;
   font-size: 32px;
-  color: $heading-pink;
+  line-height: 1.2;
+  margin-bottom: .75em; //30px
+  color: $brand-bright-pink;
 }
 
-h4 {
+//h3 {
+//  @extend .alice;
+//  font-size: 32px;
+//  color: $heading-pink;
+//}
+
+h3 {
   @extend .neuton;
   font-size: 28px;
   color: $almost-black;
 }
 
-h5 {
+h4 {
   font-weight: 700;
   font-size: 15px;
+  margin-bottom: 10px;
 }
 
 p,
 li{
   line-height: 1.5;
   font-size: 15px;
+  margin-bottom: 1em;
+}
+
+.address p {
+  margin-bottom: 0;
 }
 
 a {
@@ -55,9 +69,27 @@ a {
   }
 }
 
+@mixin reset-link($color, $reset-transition:false) {
+  text-decoration: none;
+  text-shadow: none;
+  &:link,
+  &:visited,
+  &:active {
+    color: $color;
+  }
+  &:hover {
+    color: darken($color, 5%);
+    text-decoration: none;
+  }
+  @if($reset-transition) {
+    @include transition(none);
+  }
+}
+
 // Header
 
 header[role="banner"] {
+  @include box-shadow(0 1px 4px rgba(#000, 0.1));
   .navbar-header {
     background-color: $brand-dark-pink;
     width: 100%;
@@ -67,6 +99,18 @@ header[role="banner"] {
       @extend .alice;
       font-size: emCalc(16px);
       line-height: 37px;
+    }
+    span {
+      a {
+        text-decoration: none;
+        color: #fff;
+        &:hover {
+          text-shadow: 0 1px 1px rgba(#000, 0.5);
+        }
+      }
+      @media #{$small} {
+        margin-right: 15px;
+      }
     }
     @media #{$small} {
       background: url(../../assets/images/common/header-background.png) left top no-repeat $brand-dark-pink;
@@ -103,7 +147,7 @@ header[role="banner"] {
       }
     }
     @media #{$small} {
-      padding: emCalc(30px) 0;
+      padding: 40px 0 20px;
       h1 {
         float: left;
         padding:0;
@@ -131,6 +175,34 @@ header[role="banner"] {
 
 // Main Content
 
+// Content rows
+
+[role="main"] {
+  .row {
+    padding: 50px 0;
+    border-top: 1px solid #ccc;
+    &#featured-services,
+    &#meet-brenda,
+    &:first-child,
+    &:first-of-type {
+      border-top: 0;
+    }
+    &.even {
+      background-color: #F9F9F9;
+      @include box-shadow(inset 0 1px 3px #FFF);
+    }
+    h3 {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+//------------------------------------------------------------
+//-------  Specifics
+//------------------------------------------------------------
+
+//Home page
+
 // Home callout/jumbotron
 
 #home-banner.jumbotron {
@@ -141,11 +213,8 @@ header[role="banner"] {
   margin-left: -15px;
   margin-right: -15px;
   h2 {
-    @extend .alice;
-    font-size: 40px;
     color: #fff;
-    line-height: 1.2;
-    margin-bottom: .75em; //30px
+    font-size: 40px;
   }
   @media #{$small} {
     background: url(../../assets/images/home/callout-banner-repeat.png) left repeat-x;
@@ -178,27 +247,8 @@ header[role="banner"] {
     &.help {
       background-color: $btn-purple;
       &:hover {
-        background-color: darken($btn-purple, 10%);
+        background-color: darken($btn-purple, 5%);
       }
-    }
-  }
-}
-
-// Content rows
-
-[role="main"] {
-  .row {
-    padding: 40px 0;
-    border-top: 1px solid #ccc;
-    &#featured-services {
-      border-top: 0;
-    }
-    &.even {
-      background-color: #F9F9F9;
-      @include box-shadow(inset 0 1px 3px #FFF);
-    }
-    h3 {
-      margin-bottom: 35px;
     }
   }
 }
@@ -210,7 +260,10 @@ header[role="banner"] {
     margin: 0 auto;
     height: 65px;
   }
-  h4, p, a {
+  h3 {
+    margin-bottom: 0;
+  }
+  h3, p, a {
     text-align: center;
     margin-top: 20px;
     display: block;
@@ -231,54 +284,19 @@ header[role="banner"] {
 
 #coaching-mantras {
   padding-bottom: 0;
-  h5, p {
-    margin-bottom: 10px;
-  }
   .first {
     margin-bottom: 50px;
   }
 }
 
-//Desktop only background-images
-
-//Hide on mobile
-
-.bg-image {
-  display: none;
-}
-
-@media #{$small} {
-  .bg-image {
-    display: block;
-  }
-  #our-philosophy {
-    .bg-image {
-      @include replace-text($img:url(../../assets/images/home/home-our-philosophy-tablet.jpg), $x:center, $y:top);
-      height: 347px;
-    }
-  }
-  #coaching-mantras {
-    .bg-image {
-      @include replace-text($img:url(../../assets/images/home/home-coaching-mantras-tablet.jpg), $x:center, $y:bottom);
-      height: 646px;
-    }
-  }
-}
-
-@media #{$medium} {
-  #our-philosophy .bg-image {
-    background-image: url(../../assets/images/home/home-our-philosophy.jpg);
-  }
-  #coaching-mantras .bg-image {
-    background-image: url(../../assets/images/home/home-coaching-mantras.jpg);
-    height: 459px;
-  }
-}
+//Home testimonials
 
 #testimonials {
-  h3,
-  h3 + p {
+  h2,
+  h2 + p {
     text-align: center;
+  }
+  h2 + p {
     margin-bottom: 40px;
   }
   .quote {
@@ -290,7 +308,7 @@ header[role="banner"] {
     &:after {
       content: " ";
       display: block;
-      @extend .icons-quote-triangle;
+      @extend .icons-quote-triangle !optional;
       position:absolute;
       bottom: -22px;
     }
@@ -348,21 +366,368 @@ header[role="banner"] {
 
 
 @media #{$medium} {
-  .client {
-    &:nth-child(1) {
-      border-right: 1px solid #DCDFE2;
-    }
-    &:nth-child(3) {
-      clear: left;
-      border-right: 1px solid #DCDFE2;
-      border-top: 1px solid #DCDFE2;
-    }
-    &:nth-child(4) {
-      border-top: 1px solid #DCDFE2;
+  #testimonials {
+    .clients {
+      .client {
+        &:nth-child(1) {
+          border-right: 1px solid #DCDFE2;
+        }
+        &:nth-child(3) {
+          clear: left;
+          border-right: 1px solid #DCDFE2;
+          border-top: 1px solid #DCDFE2;
+        }
+        &:nth-child(4) {
+          border-top: 1px solid #DCDFE2;
+        }
+      }
     }
   }
 }
 
+
+// Services page
+
+#services {
+  h2 {
+    margin-bottom: 50px;
+  }
+}
+
+#services-tabs {
+  margin-bottom: emCalc(40px);
+  border-bottom: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  li {
+    display: table-cell;
+    float:none;
+    width: 1%;
+    border-right: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    margin:0;
+    a {
+      border: 0;
+      display: block;
+      padding: 10px;
+      color: #111;
+      font-size: 20px;
+      @extend .alice;
+      text-align: center;
+      span {
+        display: inline-block;
+        margin-right: 5px;
+      }
+      background-color: #f9f9f9;
+      &:hover {
+        background-color: darken(#f9f9f9, 5%);
+      }
+      @include transition(background 0.3s ease-in, box-shadow 0.3s ease-in);
+    }
+    &:first-child {
+      border-left: 1px solid #e2e2e2;
+    }
+    &.active {
+      a {
+        @include box-shadow(inset 0 5px 0px 0px $brand-bright-pink);
+        background-color: #fff;
+        color: $brand-bright-pink;
+      }
+    }
+  }
+}
+
+#services-tabs li.active {
+  .icons-services-icon-coaching {
+    //background-position: -19px -48px;
+    @extend .icons-services-active-icon-coaching;
+  }
+  .icons-services-icon-training {
+    //background-position: -38px -24px;
+    @extend .icons-services-active-icon-training !optional;
+  }
+  .icons-services-icon-event-mc {
+    //background-position: -50px 0;
+    @extend .icons-services-active-icon-event-mc !optional;
+  }
+  .icons-services-icon-celebrancy {
+    //background-position: -30px 0;
+    @extend .icons-services-active-icon-celebrancy !optional;
+  }
+}
+
+.tab-pane {
+  h3 {
+    @extend .alice;
+    font-size: 28px;
+    color: $almost-black;
+    margin-bottom: 20px;
+  }
+  ul {
+    li {
+      list-style: disc inside;
+    }
+  }
+  p, ul {
+    margin-bottom: 30px;
+  }
+}
+
+#sidebar-bookings {
+  background-color: $brand-dark-pink;
+  padding: 20px;
+  margin-bottom: 40px;
+  h4, p {
+    color: #fff;
+    line-height: 1.7;
+  }
+  .btn {
+    background-color: $btn-maroun;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    &:hover {
+      background-color: darken($btn-maroun, 5%);
+    }
+  }
+}
+
+#sidebar-testimonials {
+  @extend .panel-grey;
+  & > h4 {
+    color: $brand-bright-pink;
+    @extend .open-sans;
+    font-weight: 700;
+    font-size: 17px;
+    //margin-bottom: 20px;
+  }
+  .testimonial {
+    margin-top: 30px;
+  }
+}
+
+@media #{$small} {
+  #sidebar-bookings {
+    background: url(../../assets/images/services/services-form-background-tablet.png) no-repeat #F6515D;
+    width: 150px;
+    min-height: 402px;
+    padding: 10px;
+  }
+}
+
+@media #{$medium} {
+  #sidebar-bookings {
+    background: url(../../assets/images/services/services-form-background.png) no-repeat #F6515D;
+    width: 205px;
+    min-height: 676px;
+    padding: 20px;
+  }
+}
+
+@media #{$large} {
+  #sidebar-bookings {
+    width: 252px;
+  }
+}
+
+
+p q {
+  font-style: italic;
+}
+
+.content-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 0;
+  @include pie-clearfix;
+  h2 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+@media #{$small} {
+  .content-header {
+    h2 {
+      text-align: left;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Blog page
+#blog-header {
+  .input-group {
+    $input-radius: 17px;
+    input {
+      @include border-radius($input-radius 0 0 $input-radius);
+    }
+    button {
+      @include border-radius(0 $input-radius $input-radius 0);
+      background-color: $brand-bright-pink;
+      border-color: $brand-bright-pink;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+}
+
+article {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+  &:last-child{
+    border-bottom: 0;
+  }
+  h4 {
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  p, img {
+    margin-bottom: 30px;
+  }
+  p {
+    line-height: 1.7;
+  }
+}
+
+#sidebar-blog-filter {
+  @extend .panel-grey;
+  margin-bottom: 20px;
+  h4 {
+    @extend .open-sans;
+    font-size: 17px;
+    color: $brand-bright-pink;
+    margin: 30px 0 10px;
+    &:first-child {
+      margin-top:0;
+    }
+  }
+  li {
+    margin-bottom: .5em;
+  }
+}
+
+// Contact page
+
+.required-fields {
+  font-size: 13px;
+  margin: 40px 0 20px;
+}
+
+.required-fields, label {
+  span {
+    color: $brand-bright-pink;
+  }
+}
+
+#contact-form {
+  label {
+    @extend .open-sans;
+    font-size: 15px;
+    text-align: left;
+  }
+  button {
+    background-color: $brand-bright-pink;
+    color: #fff;
+    font-weight: 700;
+    &:hover {
+      background-color: darken($brand-bright-pink, 10%);
+    }
+  }
+}
+
+#sidebar-contact {
+  margin-bottom: 40px;
+  .bg-image {
+    position: relative;
+    p {
+      position: absolute;
+      text-align: right;
+      right: 20px;
+      bottom: 20px;
+      font-size: 32px;
+      color: #fff;
+      @extend .alice;
+      line-height: 1.2;
+      margin:0;
+    }
+  }
+}
+
+//------------------------------------------------------------
+//-------  Background-images
+//------------------------------------------------------------
+
+//Hide on mobile
+
+.bg-image {
+  display: none;
+  //@include background-size(100%);
+  //height: auto;
+}
+
+//Show tablet versions...
+
+@media #{$small} {
+  .bg-image {
+    display: block;
+  }
+  #our-philosophy {
+    .bg-image {
+      @include replace-text($img:url(../../assets/images/home/home-our-philosophy-tablet.jpg), $x:center, $y:top);
+      height: 347px;
+    }
+  }
+  #coaching-mantras {
+    .bg-image {
+      @include replace-text($img:url(../../assets/images/home/home-coaching-mantras-tablet.jpg), $x:center, $y:bottom);
+      height: 646px;
+    }
+  }
+  #meet-brenda {
+    .bg-image {
+      @include replace-text($img:url(../../assets/images/about/brenda-tablet.jpg), $x:right, $y:top);
+      height: 379px;
+    }
+  }
+  #logo-meaning .bg-image {
+    @include replace-text($img:url(../../assets/images/about/mindmeld-logo-meaning.jpg), $x:left, $y:top);
+    height: 159px;
+  }
+
+  #sidebar-contact .bg-image {
+    background: url(../../assets/images/contact/contact-sidebar-brenda-ratcliff-tablet.jpg) top right no-repeat;
+    height: 447px;
+  }
+}
+
+//Show larger versions...
+
+@media #{$medium} {
+  #our-philosophy .bg-image {
+    background-image: url(../../assets/images/home/home-our-philosophy.jpg);
+  }
+  #coaching-mantras .bg-image {
+    background-image: url(../../assets/images/home/home-coaching-mantras.jpg);
+    height: 459px;
+  }
+  #meet-brenda .bg-image {
+    background-image: url(../../assets/images/about/brenda.jpg);
+    height: 522px;
+  }
+  //#logo-meaning .bg-image {
+  //  background-image: url(../../assets/images/about/mindmeld-logo-meaning.jpg);
+  //  height: 159px;
+  //}
+
+  #sidebar-contact .bg-image {
+    background-image: url(../../assets/images/contact/contact-sidebar-brenda-ratcliff.jpg);
+    height: 609px;
+  }
+}
 // Footer
 
 footer {
@@ -411,7 +776,7 @@ footer {
     }
   }
   @media #{$small} {
-    background: url(../../assets/images/common/footer-background-repeat.png) left repeat-x;
+    background: url(../../assets/images/common/footer-background-repeat.png) left top repeat-x $brand-dark-pink;
     height: 349px;
   }
 }
